@@ -52,7 +52,7 @@ jobs:
           git config user.name "github-actions[bot]"
 
       - name: Bump patch version
-        run: npm version patch -m "chore: bump version to %s [skip ci]"
+        run: npm version patch -m 'chore: bump version to %s [skip ci]'
 
       - name: Build
         run: npm run build
