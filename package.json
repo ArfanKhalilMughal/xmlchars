@@ -8,8 +8,21 @@
   ],
   "main": "xmlchars.js",
   "types": "xmlchars.d.ts",
-  "repository": "https://github.com/lddubeau/xmlchars.git",
-  "author": "Louis-Dominique Dubeau <ldd@lddubeau.com>",
+  "repository": "https://github.com/ArfanKhalilMughal/xmlchars",
+  "forkedFrom": {
+    "repository": "https://github.com/lddubeau/xmlchars",
+    "author": "Louis-Dominique Dubeau",
+    "url": "https://github.com/lddubeau"
+  },
+  "author": {
+    "email": "arfankhalil@hotmail.com",
+    "name": "Arfan Khalil Mughal",
+    "url": "https://github.com/ArfanKhalilMughal"
+  },
+  "bugs": {
+    "email": "arfankhalil@hotmail.com",
+    "url": "https://github.com/ArfanKhalilMughal/xmlchars/issues"
+  },
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
