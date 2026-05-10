@@ -46,11 +46,15 @@ jobs:
           git config user.name "github-actions[bot]"
       - name: Bump patch version
         run: |
-          npm version patch -m "chore: bump version to %s [skip ci]"
+          npm version patch --no-git-tag-version --ignore-scripts
+          VERSION=$(node -p "require('./package.json').version")
+          git add package.json
+          git commit -m "chore: bump version to $VERSION [skip ci]"
+          git tag "v$VERSION"
       - name: Build
         run: npm run build
       - name: Publish to npm
-        run: cd build/dist && npm publish
+        run: cd build/dist && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Push version bump
