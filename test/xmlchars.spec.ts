@@ -1,4 +1,3 @@
-// tslint:disable-next-line:missing-jsdoc
 import { expect } from "chai";
 import * as xml_1_0_ed4 from "../src/xml/1.0/ed4";
 import * as xml_1_0_ed5 from "../src/xml/1.0/ed5";
@@ -100,7 +99,6 @@ const one: Fixture = {
   data: "\u0001",
 };
 
-// tslint:disable-next-line:mocha-no-side-effect-code
 const ALL_FIXTURES = new Set([
   x,
   abc,
@@ -154,7 +152,7 @@ function makeCodePointTestTests(codePointTest: (c: number) => boolean,
                                 testCase: Case): void {
   for (const fixture of testCase.matching) {
     const { data, name } = fixture;
-    // tslint:disable-next-line:no-non-null-assertion
+     
     const code = data.codePointAt(0)!;
     if (data.length > String.fromCodePoint(code).length) {
       // We skip those fixtures that contain more than one character.
@@ -168,7 +166,7 @@ function makeCodePointTestTests(codePointTest: (c: number) => boolean,
   for (const fixture of ALL_FIXTURES) {
     if (!testCase.matching.includes(fixture)) {
       const { data, name } = fixture;
-      // tslint:disable-next-line:no-non-null-assertion
+       
       const code = data.codePointAt(0)!;
       if (data.length > String.fromCodePoint(code).length) {
         // We skip those fixtures that contain more than one character.
@@ -186,7 +184,6 @@ type FilterPropertyName<T, P> =
 
 describe("xml/1.0", () => {
   describe("ed5", () => {
-    // tslint:disable-next-line:mocha-no-side-effect-code
     const cases: Record<FilterPropertyName<typeof xml_1_0_ed5, RegExp>,
     Case> = {
       CHAR_RE: {
@@ -212,39 +209,32 @@ describe("xml/1.0", () => {
     };
 
     describe("regexes", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       for (const name of (Object.keys(cases) as (keyof typeof cases)[])) {
         describe(name, () => {
-          // tslint:disable-next-line:mocha-no-side-effect-code
           makeTests(xml_1_0_ed5[name], cases[name]);
         });
       }
     });
 
     describe(".isChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_0_ed5.isChar, cases.CHAR_RE);
     });
 
     describe(".isS", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_0_ed5.isS, cases.S_RE);
     });
 
     describe(".isNameStartChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_0_ed5.isNameStartChar,
                              cases.NAME_START_CHAR_RE);
     });
 
     describe(".isNameChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_0_ed5.isNameChar, cases.NAME_CHAR_RE);
     });
   });
 
   describe("ed4 regexes", () => {
-    // tslint:disable-next-line:mocha-no-side-effect-code
     const cases: Record<FilterPropertyName<typeof xml_1_0_ed4, RegExp>,
     Case> = {
       CHAR_RE: {
@@ -284,10 +274,8 @@ describe("xml/1.0", () => {
       },
     };
 
-    // tslint:disable-next-line:mocha-no-side-effect-code
     for (const name of (Object.keys(cases) as (keyof typeof cases)[])) {
       describe(name, () => {
-        // tslint:disable-next-line:mocha-no-side-effect-code
         makeTests(xml_1_0_ed4[name], cases[name]);
       });
     }
@@ -296,7 +284,6 @@ describe("xml/1.0", () => {
 
 describe("xml/1.1", () => {
   describe("ed2", () => {
-    // tslint:disable-next-line:mocha-no-side-effect-code
     const cases: Record<FilterPropertyName<typeof xml_1_1_ed2, RegExp>,
     Case> = {
       CHAR_RE: {
@@ -324,52 +311,43 @@ describe("xml/1.1", () => {
       },
     };
 
-    // tslint:disable-next-line:mocha-no-side-effect-code
     const isCharAndNotRestrictedCase: Case = {
       matching: cases.CHAR_RE.matching
         .filter(c => !cases.RESTRICTED_CHAR_RE.matching.includes(c)),
     };
 
     describe("regexes", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       for (const name of (Object.keys(cases) as (keyof typeof cases)[])) {
         describe(name, () => {
-          // tslint:disable-next-line:mocha-no-side-effect-code
           makeTests(xml_1_1_ed2[name], cases[name]);
         });
       }
     });
 
     describe(".isChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_1_ed2.isChar, cases.CHAR_RE);
     });
 
     describe(".isRestrictedChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_1_ed2.isRestrictedChar,
                              cases.RESTRICTED_CHAR_RE);
     });
 
     describe(".isCharAndNotRestricted", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_1_ed2.isCharAndNotRestricted,
                              isCharAndNotRestrictedCase);
     });
 
     describe(".isS", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_1_ed2.isS, cases.S_RE);
     });
 
     describe(".isNameStartChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_1_ed2.isNameStartChar,
                              cases.NAME_START_CHAR_RE);
     });
 
     describe(".isNameChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xml_1_1_ed2.isNameChar, cases.NAME_CHAR_RE);
     });
   });
@@ -377,7 +355,6 @@ describe("xml/1.1", () => {
 
 describe("xmlns/1.0", () => {
   describe("ed3", () => {
-    // tslint:disable-next-line:mocha-no-side-effect-code
     const cases: Record<FilterPropertyName<typeof xmlns_1_0_ed3, RegExp>,
     Case> = {
       NC_NAME_START_CHAR_RE: {
@@ -392,23 +369,19 @@ describe("xmlns/1.0", () => {
     };
 
     describe("regexes", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       for (const name of (Object.keys(cases) as (keyof typeof cases)[])) {
         describe(name, () => {
-          // tslint:disable-next-line:mocha-no-side-effect-code
           makeTests(xmlns_1_0_ed3[name], cases[name]);
         });
       }
     });
 
     describe(".isNCNameStartChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xmlns_1_0_ed3.isNCNameStartChar,
                              cases.NC_NAME_START_CHAR_RE);
     });
 
     describe(".isNCNameChar", () => {
-      // tslint:disable-next-line:mocha-no-side-effect-code
       makeCodePointTestTests(xmlns_1_0_ed3.isNCNameChar, cases.NC_NAME_CHAR_RE);
     });
   });

@@ -1,3 +1,5 @@
 test/tscache
 node_modules
 build
+.codesight/default.json
+.husky/commit-msg
