@@ -1,5 +1,5 @@
 {
-  "name": "xmlchars",
+  "name": "@zklogic/xmlchars",
   "version": "2.2.1",
   "description": "Utilities for determining if characters belong to character classes defined by the XML specs.",
   "keywords": [
@@ -8,7 +8,10 @@
   ],
   "main": "xmlchars.js",
   "types": "xmlchars.d.ts",
-  "repository": "https://github.com/ArfanKhalilMughal/xmlchars",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArfanKhalilMughal/xmlchars.git"
+  },
   "forkedFrom": {
     "repository": "https://github.com/lddubeau/xmlchars",
     "author": "Louis-Dominique Dubeau",
